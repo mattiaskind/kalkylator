@@ -8,37 +8,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-
-/* Jag är väldigt mycket nybörjare på C# vilket innebär att jag inte riktigt vet vad som är "best practice". Jag försöker skriva
- * koden på ett begripligt sätt med utgångspunkt i DRY-principen (don't repeat yourself) och jag är medveten
- * om att koden med största säkerhet går att refaktorera. Jag hoppas ändå att läsbarheten är tillräcklig.
- * 
- * Jag har lagt en hel del tid på att få till logiken i räknaren. Även om man kan vara säker på vilken typ av inmatning programmet
- * tar emot finns det en mängd kombinationer som behöver hanteras. Jag har försökt implementera logik som tar hand om dessa,
- * exempelvis om användaren matar in flera nollor i början, flera kommatecken eller får för sig att summera när det
- * endast finns en term. Med det sagt har jag säkert missat någon eller några varianter. Jag har testat de kombinationer jag
- * kunnat komma på och försökt att hitta lösningar till de problem som uppstått.
- *  
- * Det mesta av koden finns i den här filen men jag har även en klass som agerar struktur för varje uträkning samt
- * en klass som tar hand om räkneoperationerna. Dessa finns i separata filer. Jag har också skapat några olika metoder 
- * utöver de metoder som hanterar klick-eventen. Under tiden en uträkning genomförs sparar jag de olika delarna som 
- * egenskaper i den här klassen. Vid varje summering lagras termer, operator och summa som egenskaper i en klass varefter 
- * de läggs i en lista. På så vis kan jag spara varje uträkning och använda listan för att visa historik. 
- * Jag vet inte om det finns eklare och mer effektiva sätt att använda för att spara uträkningar än en klass men 
- * det var vad jag kom på. Jag behöver hantera olika datatyper som hör ihop på det här sättet. Jag har sneglat lite på 
- * tuples och structs men eftersom klassen löser problemet relativt smidigt har jag hållit fast vid den lösningen.
- * 
- * Jag har valt att använda ett StringBuilder-objekt när jag skapar historiken eftersom strängar inte kan muteras utan
- * måste kopieras. Det går kanske att lösa det på ett bättre sätt och jag skapar ändå en textsträng för varje iteration
- * när jag går igenom listan men det rör sig om så få element totalt så förhoppningsvis är det inte något problem.
- * 
- * En ambition som jag inte riktigt nått upp till här är väl att varje metod i huvudsak bör göra en sak. Jag skulle nog kunna
- * skapa fler mindre metoder för att dela upp logiken mer men jag tycker ändå att det fungerar som det är nu när programmet
- * är simpelt.
- * 
- * Jag har skrivit kommentarer löpande och förökt redogöra för logiken
- */
-
 namespace WindowsFormsCalc
 {
     public partial class Form1 : Form
@@ -232,6 +201,7 @@ namespace WindowsFormsCalc
                 StartOver = true;
             }
         }
+
         // Metoden rensar displayen och den lagrade siffersträngen
         private void ClearDisplay()
         {
